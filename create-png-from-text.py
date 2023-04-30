@@ -40,7 +40,9 @@ if 0 < len(lines):
     for y in range(height):
         line = lines[y]
         for x in range(width):
-            if x < len(line):
+            if len(line) <= x:
+                break
+            try:
                 c = line[x]
                 v = int(c)
                 color = [0,0,0]
@@ -53,6 +55,8 @@ if 0 < len(lines):
                     for xx in range(scale):
                         xxx = x * scale + xx
                         image.putpixel((xxx,yyy), (color[0], color[1], color[2]))
+            except:
+                pass
     try:
         image.save("a.png")
     except:
