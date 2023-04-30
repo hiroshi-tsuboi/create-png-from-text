@@ -24,6 +24,8 @@ except:
     sys.exit()
 
 print("scale=%d" % scale)
+if scale <= 0:
+    sys.exit()
 
 if 0 < len(lines):
     height = len(lines)
@@ -31,9 +33,9 @@ if 0 < len(lines):
     for line in lines:
         width = max(width, len(line))
 
-    print("width=%d height=%d" % (width, height))
+    print("original-width=%d original-height=%d" % (width, height))
 
-    image = Image.new("RGB",(width, height))
+    image = Image.new("RGB",(width * scale, height * scale))
 
     for y in range(height):
         line = lines[y]
@@ -45,13 +47,14 @@ if 0 < len(lines):
                 for j in range(3):
                     if v & (1 << j):
                         color[j] = 255
-                image.putpixel((x,y), (color[0], color[1], color[2]))
+                # fill block
+                for yy in range(scale):
+                    yyy = y * scale + yy
+                    for xx in range(scale):
+                        xxx = x * scale + xx
+                        image.putpixel((xxx,yyy), (color[0], color[1], color[2]))
     try:
         image.save("a.png")
     except:
         print("failed to save a.png")
         sys.exit()
-
-
-
-
