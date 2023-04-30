@@ -7,20 +7,29 @@ from PIL import Image
 if len(sys.argv) < 2:
     sys.exit()
 
+scale = 1
+
 filename = sys.argv[1]
 lines = []
 try:
     with open(filename, "rt") as f:
-        lines = f.readlines()
+        for line in f:
+            if 'scale' in line:
+                items = line.split()
+                scale = int(items[1])
+            else:
+                lines.append(line.rstrip())
 except:
     print("failed to open %s" % filename)
     sys.exit()
+
+print("scale=%d" % scale)
 
 if 0 < len(lines):
     height = len(lines)
     width = 0
     for line in lines:
-        width = max(width, len(line.rstrip()))
+        width = max(width, len(line))
 
     print("width=%d height=%d" % (width, height))
 
