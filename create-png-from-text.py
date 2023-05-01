@@ -44,11 +44,16 @@ if 0 < len(lines):
                 break
             try:
                 c = line[x]
-                v = int(c)
+                v = int(c, 16)
                 color = [0,0,0]
                 for j in range(3):
                     if v & (1 << j):
                         color[j] = 255
+                if v == 8:
+                    color = [0xc0, 0xc0, 0xc0]
+                elif 8 <= v:
+                    for i in range(3):
+                        color[i] = int((color[i] + 1) / 2)
                 # fill block
                 for yy in range(scale):
                     yyy = y * scale + yy

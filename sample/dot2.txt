@@ -1,0 +1,18 @@
+scale 32
+aaaaaaaaaaaaaaaa
+bbbbbbbbbbbbbbbb
+eeee
+eeee
+eeee
+eeee
+4444444444444444
+            ffff
+            ffff
+            ffff
+            ffff
+9999dddd77776666
+9999dddd77776666
+9999dddd77773333
+9999dddd77773333
+2222222222222222
+1111111111111111
