@@ -50,10 +50,12 @@ if 0 < len(lines):
                     if v & (1 << j):
                         color[j] = 255
                 if v == 8:
-                    color = [0xc0, 0xc0, 0xc0]
+                    color = [0x40, 0x40, 0x40]
                 elif 8 <= v:
                     for i in range(3):
                         color[i] = int((color[i] + 1) / 2)
+                        if c < 'a' and 0 != color[i]:
+                            color[i] += 0x40
                 # fill block
                 for yy in range(scale):
                     yyy = y * scale + yy
