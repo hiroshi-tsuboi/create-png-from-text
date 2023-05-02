@@ -35,7 +35,7 @@ if 0 < len(lines):
 
     print("original-width=%d original-height=%d" % (width, height))
 
-    image = Image.new("RGB",(width * scale, height * scale))
+    image = Image.new("RGB", (width * scale, height * scale), (0x20, 0x20, 0x20))
 
     for y in range(height):
         line = lines[y]
